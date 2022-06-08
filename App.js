@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Login } from "./src/surfaces/Login";
@@ -63,6 +63,14 @@ function Home() {
   );
 }
 
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "rgb(255, 255, 255)",
+  },
+};
+
 export default function App() {
   const [userLoggedIn, setIsUserLoggedIn] = useState(true);
   let [fontsLoaded] = useFonts({
@@ -75,7 +83,7 @@ export default function App() {
   }
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
           {!userLoggedIn ? (
             <Stack.Screen name='Login' component={Login} />

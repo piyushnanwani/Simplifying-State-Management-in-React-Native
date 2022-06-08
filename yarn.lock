@@ -3855,6 +3855,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-linear-gradient@npm:~11.0.3":
+  version: 11.0.3
+  resolution: "expo-linear-gradient@npm:11.0.3"
+  peerDependencies:
+    expo: "*"
+  checksum: 0728a0ef16210f0998b0fd309880e411f873542ca8878f069adfb8356f9e6bc808a00fef2aec8094be1bbdb094a359c9a281abd0894cd601991c3e82925704de
+  languageName: node
+  linkType: hard
+
 "expo-modules-autolinking@npm:0.5.5, expo-modules-autolinking@npm:~0.5.1":
   version: 0.5.5
   resolution: "expo-modules-autolinking@npm:0.5.5"
@@ -4280,6 +4289,7 @@ __metadata:
     expo: ~44.0.0
     expo-app-loading: ~1.3.0
     expo-font: ~10.0.4
+    expo-linear-gradient: ~11.0.3
     expo-status-bar: ~1.2.0
     react: 17.0.1
     react-dom: 17.0.1
