@@ -10,7 +10,7 @@ export const ListHeaderComponent = () => {
         style={{
           width: 56,
           height: 56,
-          marginRight: 20,
+          marginRight: 30,
         }}
       >
         <LinearGradient

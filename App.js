@@ -46,11 +46,15 @@ function Home() {
         tabBarShowLabel: false,
         headerTransparent: true,
         headerTitleAlign: "left",
+        headerStyle: {
+          backgroundColor: "pink",
+          height: 160,
+        },
         headerTitleStyle: {
-          paddingTop: 140,
-          paddingBottom: 40,
           textAlign: "left",
           fontWeight: "bold",
+          fontFamily: "Poppins_700Bold",
+          fontSize: 24,
         },
       })}
     >
@@ -67,6 +71,7 @@ const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
+    // background: "rgb(0, 0, 0)",
     background: "rgb(255, 255, 255)",
   },
 };
