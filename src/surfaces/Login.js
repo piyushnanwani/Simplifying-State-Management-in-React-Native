@@ -9,7 +9,9 @@ export const Login = () => {
   return (
     <SafeAreaView style={{ flex: 1, paddingTop: headerHeight }}>
       <View>
-        <Text>this will be the login screen</Text>
+        <Text style={{ fontFamily: "Poppins_400Regular", fontSize: 20 }}>
+          this will be the login screen
+        </Text>
       </View>
     </SafeAreaView>
   );

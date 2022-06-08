@@ -9,7 +9,9 @@ export const Conversations = () => {
   return (
     <SafeAreaView style={{ flex: 1, paddingTop: headerHeight }}>
       <View>
-        <Text>this will be the chat screen</Text>
+        <Text style={{ fontFamily: "Poppins_400Regular", fontSize: 20 }}>
+          this will be the chat screen
+        </Text>
       </View>
     </SafeAreaView>
   );
