@@ -13,7 +13,11 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { colors } from "./src/styles/colors";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppLoading from "expo-app-loading";
-import { useFonts, Poppins_400Regular } from "@expo-google-fonts/poppins";
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_700Bold,
+} from "@expo-google-fonts/poppins";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -41,6 +45,13 @@ function Home() {
         tabBarInactiveTintColor: colors.black,
         tabBarShowLabel: false,
         headerTransparent: true,
+        headerTitleAlign: "left",
+        headerTitleStyle: {
+          paddingTop: 140,
+          paddingBottom: 40,
+          textAlign: "left",
+          fontWeight: "bold",
+        },
       })}
     >
       <Tab.Screen name='Feed' component={Feed} />
@@ -56,6 +67,7 @@ export default function App() {
   const [userLoggedIn, setIsUserLoggedIn] = useState(true);
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
+    Poppins_700Bold,
   });
 
   if (!fontsLoaded) {
