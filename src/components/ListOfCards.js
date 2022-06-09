@@ -1,5 +1,6 @@
 import React from "react";
-import { View, FlatList, Pressable, Image } from "react-native";
+import { View, FlatList } from "react-native";
+import { Card } from "../components/Card";
 
 const arrayOfImages = [
   {
@@ -38,26 +39,14 @@ const arrayOfImages = [
 
 export const ListOfCards = () => {
   const renderItem = ({ item }) => {
-    return (
-      <Image
-        style={{
-          width: "100%",
-          height: 288,
-          borderRadius: 20,
-          marginBottom: 32,
-        }}
-        source={{
-          uri: item.url,
-        }}
-      />
-    );
+    return <Card item={item} />;
   };
   return (
     <View
       style={{
         marginTop: -200,
         paddingHorizontal: 20,
-        marginBottom: 200,
+        marginBottom: 160,
       }}
     >
       <FlatList
