@@ -8,7 +8,7 @@ import { Feed } from "./src/surfaces/Feed";
 import { Profile } from "./src/surfaces/Profile";
 import { Favorites } from "./src/surfaces/Favorites";
 import { AddPost } from "./src/surfaces/AddPost";
-import { Conversations } from "./src/surfaces/Conversations";
+import { ConversationsNavigation } from "./src/surfaces/ConversationsNavigation";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { colors } from "./src/styles/colors";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -18,9 +18,12 @@ import {
   Poppins_400Regular,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
+import { Text } from "react-native";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const ConversationsBase = () => <View style={{ flex: 1 }} />;
 
 function Home() {
   return (
@@ -31,8 +34,6 @@ function Home() {
 
           if (route.name === "Feed") {
             iconName = focused ? "md-home" : "md-home-outline";
-          } else if (route.name === "Conversations") {
-            iconName = focused ? "chatbox" : "chatbox-outline";
           } else if (route.name === "Favorites") {
             iconName = focused ? "heart" : "heart-outline";
           } else if (route.name === "Profile") {
@@ -47,7 +48,6 @@ function Home() {
         headerTransparent: true,
         headerTitleAlign: "left",
         headerStyle: {
-          backgroundColor: "pink",
           height: 160,
         },
         headerTitleStyle: {
@@ -59,7 +59,21 @@ function Home() {
       })}
     >
       <Tab.Screen name='Feed' component={Feed} />
-      <Tab.Screen name='Conversations' component={Conversations} />
+      <Tab.Screen
+        name='ConversationsMain'
+        component={ConversationsBase}
+        options={{
+          tabBarIcon: ({ size }) => (
+            <Ionicons name='chatbox-outline' color='#000000' size={size} />
+          ),
+        }}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate("ConversationsNav");
+          },
+        })}
+      />
       <Tab.Screen name='AddPost' component={AddPost} />
       <Tab.Screen name='Favorites' component={Favorites} />
       <Tab.Screen name='Profile' component={Profile} />
@@ -93,11 +107,18 @@ export default function App() {
           {!userLoggedIn ? (
             <Stack.Screen name='Login' component={Login} />
           ) : (
-            <Stack.Screen
-              name='Home'
-              component={Home}
-              options={{ headerShown: false }}
-            />
+            <>
+              <Stack.Screen
+                name='Home'
+                component={Home}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name='ConversationsNav'
+                component={ConversationsNavigation}
+                options={{ headerShown: false }}
+              />
+            </>
           )}
         </Stack.Navigator>
       </NavigationContainer>

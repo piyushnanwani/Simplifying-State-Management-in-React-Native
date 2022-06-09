@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, TextInput, Pressable } from "react-native";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { ListOfConvos } from "../components/ListOfConvos";
 
-export const Conversations = () => {
+export const Conversations = ({ navigation }) => {
   const headerHeight = useHeaderHeight();
   const [text, onChangeText] = React.useState();
 
   return (
-    <SafeAreaView style={{ flex: 1, paddingTop: headerHeight }}>
+    <SafeAreaView style={{ flex: 1, paddingTop: headerHeight - 30 }}>
       <View
         style={{
           width: 650,
@@ -75,7 +75,32 @@ export const Conversations = () => {
             style={{ position: "absolute", left: 28, top: 6 }}
           />
         </View>
-        <ListOfConvos />
+        <ListOfConvos navigation={navigation} />
+        <Pressable
+          onPress={() => console.log("pressed the convo button")}
+          style={{
+            position: "absolute",
+            bottom: 70,
+            left: "50%",
+          }}
+        >
+          <View
+            style={{
+              position: "absolute",
+              backgroundColor: "#000000",
+              padding: 30,
+              top: -16,
+              left: -15,
+              borderRadius: 23,
+              transform: [{ rotate: "-45deg" }],
+              shadowColor: "#000000",
+              shadowOffset: { width: 0, height: 4 },
+              shadowOpacity: 0.2,
+              shadowRadius: 4,
+            }}
+          />
+          <Ionicons name='paper-plane-outline' color='#ffffff' size={26} />
+        </Pressable>
       </View>
     </SafeAreaView>
   );

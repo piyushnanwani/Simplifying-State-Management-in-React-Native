@@ -52,10 +52,13 @@ const arrayOfConvos = [
   },
 ];
 
-export const ListOfConvos = () => {
+export const ListOfConvos = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
-      <View
+      <Pressable
+        onPress={() =>
+          navigation.navigate("Messages", { name: item.name, avatar: item.url })
+        }
         style={{
           height: 103,
           backgroundColor: "rgba(255,255,255,0.6)",
@@ -95,7 +98,7 @@ export const ListOfConvos = () => {
           <Text style={{ fontSize: 14, paddingBottom: 9 }}>{item.name}</Text>
           <Text style={{ color: "#656565", width: "65%" }}>{item.message}</Text>
         </View>
-      </View>
+      </Pressable>
     );
   };
   return (
