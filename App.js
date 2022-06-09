@@ -18,7 +18,6 @@ import {
   Poppins_400Regular,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import { Text } from "react-native";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -76,7 +75,11 @@ function Home() {
       />
       <Tab.Screen name='AddPost' component={AddPost} />
       <Tab.Screen name='Favorites' component={Favorites} />
-      <Tab.Screen name='Profile' component={Profile} />
+      <Tab.Screen
+        name='Profile'
+        component={Profile}
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 }

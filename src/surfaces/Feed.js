@@ -1,7 +1,6 @@
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native";
-import { useHeaderHeight } from "@react-navigation/elements";
 import { ListOfAvatars } from "../components/ListOfAvatars";
 import { ListOfCards } from "../components/ListOfCards";
 
