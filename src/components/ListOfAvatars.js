@@ -3,41 +3,6 @@ import { View, FlatList, Pressable, Image } from "react-native";
 import { ListHeaderComponent } from "./ListHeaderComponent";
 import { UserListContext } from "../context";
 
-const arrayOfAvatars = [
-  {
-    id: 1,
-    url: "https://raw.githubusercontent.com/PacktPublishing/Simplifying-State-Management-in-React-Native/chapter-3/assets/avatars/1.png",
-  },
-  {
-    id: 2,
-    url: "https://raw.githubusercontent.com/PacktPublishing/Simplifying-State-Management-in-React-Native/chapter-3/assets/avatars/2.png",
-  },
-  {
-    id: 3,
-    url: "https://raw.githubusercontent.com/PacktPublishing/Simplifying-State-Management-in-React-Native/chapter-3/assets/avatars/3.png",
-  },
-  {
-    id: 4,
-    url: "https://raw.githubusercontent.com/PacktPublishing/Simplifying-State-Management-in-React-Native/chapter-3/assets/avatars/4.png",
-  },
-  {
-    id: 5,
-    url: "https://raw.githubusercontent.com/PacktPublishing/Simplifying-State-Management-in-React-Native/chapter-3/assets/avatars/5.png",
-  },
-  {
-    id: 6,
-    url: "https://raw.githubusercontent.com/PacktPublishing/Simplifying-State-Management-in-React-Native/chapter-3/assets/avatars/6.png",
-  },
-  {
-    id: 7,
-    url: "https://raw.githubusercontent.com/PacktPublishing/Simplifying-State-Management-in-React-Native/chapter-3/assets/avatars/7.png",
-  },
-  {
-    id: 8,
-    url: "https://raw.githubusercontent.com/PacktPublishing/Simplifying-State-Management-in-React-Native/chapter-3/assets/avatars/8.png",
-  },
-];
-
 export const ListOfAvatars = () => {
   const renderItem = ({ item }) => {
     return (
@@ -53,7 +18,7 @@ export const ListOfAvatars = () => {
   };
   return (
     <UserListContext.Consumer>
-      {(value) => (
+      {({ userList }) => (
         <View
           style={{
             zIndex: 100,
@@ -63,7 +28,7 @@ export const ListOfAvatars = () => {
           }}
         >
           <FlatList
-            data={arrayOfAvatars}
+            data={userList}
             renderItem={renderItem}
             keyExtractor={(item) => item.id}
             horizontal

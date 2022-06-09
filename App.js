@@ -34,7 +34,7 @@ export default function App() {
     Poppins_700Bold,
   });
 
-  async function fetchUserData(id) {
+  async function fetchUserData() {
     const response = await fetch(requestBase + "/users.json");
     setUserList(await response.json());
   }
@@ -53,16 +53,18 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <UserListContext.Provider value={userList}>
+      <UserListContext.Provider value={{ userList: userList }}>
         <NavigationContainer theme={MyTheme}>
           <Stack.Navigator>
             {!userLoggedIn ? (
               <Stack.Screen name='Login' component={Login} />
             ) : (
               <>
-                <Stack.Screen name='Home' options={{ headerShown: false }}>
-                  {(props) => <Home {...props} userList={userList} />}
-                </Stack.Screen>
+                <Stack.Screen
+                  name='Home'
+                  component={Home}
+                  options={{ headerShown: false }}
+                />
                 <Stack.Screen
                   name='ConversationsNav'
                   component={ConversationsNavigation}

@@ -13,8 +13,7 @@ const Tab = createBottomTabNavigator();
 
 const ConversationsBase = () => <View style={{ flex: 1 }} />;
 
-export const Home = ({ userList }) => {
-  console.log("hey! USERS!!!", userList);
+export const Home = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

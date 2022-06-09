@@ -1,30 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, FlatList, Text, StyleSheet } from "react-native";
+import AppLoading from "expo-app-loading";
+import { requestBase } from "../utils/constants";
 
-const arrayOfMessages = [
-  {
-    id: 1,
-    type: "to",
-    text: "see the lions or sea lions? also, is mac there with u??",
-  },
-  {
-    id: 2,
-    type: "to",
-    text: "when?",
-  },
-  {
-    id: 3,
-    type: "from",
-    text: "they are doing a feed thing event at the zoo..",
-  },
-  {
-    id: 4,
-    type: "from",
-    text: "we r goin to c the lions",
-  },
-];
+export const ListOfMessages = ({ conversationId }) => {
+  const [messages, setMessages] = useState(null);
 
-export const ListOfMessages = () => {
+  async function fetchMessages() {
+    const response = await fetch(
+      requestBase + "/messages/" + conversationId + ".json"
+    );
+    setMessages(await response.json());
+  }
+
+  useEffect(() => {
+    fetchMessages();
+  }, []);
+  if (!messages) {
+    return <AppLoading />;
+  }
+
   const renderItem = ({ item }) => {
     return (
       <View
@@ -44,7 +39,7 @@ export const ListOfMessages = () => {
       }}
     >
       <FlatList
-        data={arrayOfMessages}
+        data={messages.messages}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
